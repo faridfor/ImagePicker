@@ -2,11 +2,10 @@ package com.nguyenhoanglam.imagepicker.ui.imagepicker;
 
 import android.widget.ImageView;
 
-import com.bumptech.glide.Glide;
-import com.bumptech.glide.load.engine.DiskCacheStrategy;
-import com.bumptech.glide.load.resource.drawable.DrawableTransitionOptions;
-import com.bumptech.glide.request.RequestOptions;
 import com.nguyenhoanglam.imagepicker.R;
+import com.squareup.picasso.Picasso;
+
+import java.io.File;
 
 
 /**
@@ -15,21 +14,29 @@ import com.nguyenhoanglam.imagepicker.R;
 
 public class ImageLoader {
 
-    private RequestOptions options;
+//    private RequestOptions options;
 
     public ImageLoader() {
-        options = new RequestOptions()
+        /*options = new RequestOptions()
                 .placeholder(R.drawable.imagepicker_image_placeholder)
                 .error(R.drawable.imagepicker_image_placeholder)
                 .centerCrop()
-                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);
+                .diskCacheStrategy(DiskCacheStrategy.RESOURCE);*/
     }
 
     public void loadImage(String path, ImageView imageView) {
-        Glide.with(imageView.getContext())
+        Picasso.get().load(new File(path))
+                .resize(300, 300)
+//                .onlyScaleDown()
+                .centerInside()
+//                .centerCrop()
+                .error(R.drawable.imagepicker_image_placeholder)
+                .placeholder(R.drawable.imagepicker_image_placeholder)
+                .into(imageView);
+        /*Glide.with(imageView.getContext())
                 .load(path)
                 .apply(options)
                 .transition(DrawableTransitionOptions.withCrossFade())
-                .into(imageView);
+                .into(imageView);*/
     }
 }

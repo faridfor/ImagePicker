@@ -7,14 +7,15 @@ package com.nguyenhoanglam.sample;
 
 import android.content.Intent;
 import android.os.Bundle;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Switch;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoanglam.imagepicker.model.Config;
 import com.nguyenhoanglam.imagepicker.model.Image;
@@ -31,9 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private Switch folderModeSwitch;
     private Switch multipleModeSwitch;
     private Switch cameraOnlySwitch;
-    private Button pickImageButton;
-    private Button launchFragmentButton;
-    private RecyclerView recyclerView;
 
     private ImageAdapter adapter;
     private ArrayList<Image> images = new ArrayList<>();
@@ -46,9 +44,9 @@ public class MainActivity extends AppCompatActivity {
         folderModeSwitch = findViewById(R.id.switch_folder_mode);
         multipleModeSwitch = findViewById(R.id.switch_multiple_mode);
         cameraOnlySwitch = findViewById(R.id.switch_camera_only);
-        pickImageButton = findViewById(R.id.button_pick_image);
-        launchFragmentButton = findViewById(R.id.button_launch_fragment);
-        recyclerView = findViewById(R.id.recyclerView);
+        Button pickImageButton = findViewById(R.id.button_pick_image);
+        Button launchFragmentButton = findViewById(R.id.button_launch_fragment);
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
 
 
         pickImageButton.setOnClickListener(new View.OnClickListener() {
@@ -64,7 +62,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        adapter = new ImageAdapter(this);
+        adapter = new ImageAdapter();
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
         recyclerView.setLayoutManager(layoutManager);
         recyclerView.setAdapter(adapter);

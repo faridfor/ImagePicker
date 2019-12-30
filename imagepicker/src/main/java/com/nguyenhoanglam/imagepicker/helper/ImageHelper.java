@@ -82,7 +82,7 @@ public class ImageHelper {
     }
 
     public static boolean isGifFormat(Image image) {
-        String extension = image.getPath().substring(image.getPath().lastIndexOf(".") + 1, image.getPath().length());
+        String extension = image.getPath().substring(image.getPath().lastIndexOf(".") + 1);
         return extension.equalsIgnoreCase("gif");
     }
 

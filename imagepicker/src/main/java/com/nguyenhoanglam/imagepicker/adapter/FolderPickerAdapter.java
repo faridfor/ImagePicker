@@ -1,11 +1,13 @@
 package com.nguyenhoanglam.imagepicker.adapter;
 
 import android.content.Context;
-import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.annotation.NonNull;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.nguyenhoanglam.imagepicker.R;
 import com.nguyenhoanglam.imagepicker.listener.OnFolderClickListener;
@@ -29,8 +31,9 @@ public class FolderPickerAdapter extends BaseRecyclerViewAdapter<FolderPickerAda
         this.itemClickListener = itemClickListener;
     }
 
+    @NonNull
     @Override
-    public FolderViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
+    public FolderViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = getInflater().inflate(R.layout.imagepicker_item_folder, parent, false);
         return new FolderViewHolder(itemView);
     }
@@ -75,7 +78,7 @@ public class FolderPickerAdapter extends BaseRecyclerViewAdapter<FolderPickerAda
         private TextView name;
         private TextView count;
 
-        public FolderViewHolder(View itemView) {
+        FolderViewHolder(View itemView) {
             super(itemView);
             image = itemView.findViewById(R.id.image_folder_thumbnail);
             name = itemView.findViewById(R.id.text_folder_name);
